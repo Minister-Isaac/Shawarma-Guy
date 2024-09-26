@@ -1,0 +1,71 @@
+.results-container {
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #f4f4f4;
+  }
+  
+  tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  tr:hover {
+    background-color: #f1f1f1;
+  }
+
+  /* Tablet View */
+@media (max-width: 768px) {
+  th, td {
+      padding: 8px;
+      font-size: 14px;
+  }
+
+  table {
+      width: 100%;
+  }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+  th, td {
+      padding: 5px;
+      font-size: 12px;
+  }
+
+  table {
+      width: 100%;
+      font-size: 12px;
+  }
+
+  th {
+      display: none; /* Hide table headers for mobile */
+  }
+
+  td {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 10px;
+      border: none;
+  }
+
+  td::before {
+      content: attr(data-label);
+      font-weight: bold;
+      margin-right: 10px;
+  }
+}
+  

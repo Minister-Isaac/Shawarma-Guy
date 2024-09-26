@@ -1,0 +1,191 @@
+/* Hero Container */
+.hero-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 30px 50px;
+    margin-top: 20px;
+    background-color: #f7f7f7; /* Soft background to contrast with white body */
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    gap: 35px;
+}
+
+/* Left Section Styling */
+.hero-left {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.hero-left h1 {
+    font-size: 48px;
+    font-weight: 600;
+    color: #333;
+}
+
+.hero-left img {
+    width: 100%;
+    height: 100vh;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Right Section Styling */
+.hero-right {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 25px;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.hero-right h1 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #2a2a2a;
+    margin-bottom: 10px;
+}
+
+/* Form Styling */
+.hero-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.hero-form label {
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #555;
+    text-align: left;
+    margin-bottom: 5px;
+}
+
+.hero-form input {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+    transition: border 0.2s ease;
+}
+
+.hero-form input:focus {
+    border: 1px solid #8fb654; /* Matches the button color */
+    outline: none;
+}
+
+/* Button Styling */
+.hero-btn {
+    width: 100%;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    color: #fff;
+    background-color: #8fb654; /* Olive-green color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hero-btn:hover {
+    background-color: #6d9947; /* Darker green on hover */
+}
+
+/* Disabled Message Styling */
+.hero-disabled {
+    font-size: 18px;
+    color: #999;
+    text-align: center;
+}
+
+/* Success Message Styling */
+.hero-success {
+    width: 100%;
+    background-color: #eafde6;
+    border: 2px solid #8fb654;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+}
+
+.hero-success h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #4caf50;
+    margin-bottom: 15px;
+}
+
+.hero-success p {
+    font-size: 18px;
+    color: #333;
+}
+
+@media (max-width: 768px) {
+    .hero-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .hero-left {
+        width: 100%;
+    }
+
+    .hero-right {
+        width: 100%;
+    }
+
+    .hero-left img {
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-left h1, .hero-right h1 {
+        font-size: 36px;
+    }
+}
+
+/* Mobile View */
+@media (max-width: 480px) {
+    .hero-container {
+        padding: 20px;
+    }
+
+    .hero-left h1 {
+        font-size: 28px;
+    }
+
+    .hero-left img {
+        width: 100%;
+        height: auto;
+    }
+
+    .hero-right h1 {
+        font-size: 24px;
+    }
+
+    .hero-form input, .hero-form button {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .hero-btn {
+        padding: 10px;
+    }
+}
