@@ -77,16 +77,14 @@
 /* Mobile View */
 @media (max-width: 480px) {
     .bid-navbar {
-        display: flex;
         flex-direction: column;
         text-align: center;
         padding: 10px 20px;
-        margin-right: 0;
-        gap: 20px;
+        gap: 30px;
     }
 
     .bid-navbar h1 {
-        font-size: 5px; /* Reduced font size */
+        font-size: 15px; /* Reduced font size */
         color: rgba(255, 255, 255, 0.8); /* Make it fade into the navbar */
         transition: color 0.3s ease; /* Smooth transition for the color change */
         font-weight: 100;
