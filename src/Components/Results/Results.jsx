@@ -10,19 +10,34 @@ const Results = () => {
     const fetchData = async () => {
       try {
         const response = await fetch(
-          'https://script.google.com/macros/s/AKfycbyXJhSIQX3pZpq7QXA0-R60i6Xq3342zUsoCihighiiLBdcmekLSniySVfpFv5Fr1ThgA/exec'
+          'https://v1.nocodeapi.com/minister18/google_sheets/iQxNLtNaJzVLrwFk?tabId=Sheet1'
         );
         const data = await response.json();
+
+        const currentTime = new Date();
+        const currentDay = currentTime.getDay();
+        const currentHour = currentTime.getHours();
 
         const entries = data.map((entry) => ({
           name: entry.name,
           email: entry.email,
           phoneNumber: entry.phoneNumber,
           bid: parseInt(entry.bid, 10),
+          timestamp: entry.timestamp || new Date().toLocaleString(), // Add timestamp
         }));
 
         setUsers(entries);
         determineWinner(entries); // Determine the winner upon data fetch
+
+        // Check if the current time is before or after 4 PM on Friday (day 5)
+        if (currentDay === 5 && currentHour >= 16) {
+          // Fetch and display current week's bids
+          const currentBids = entries.filter(entry => {
+            const bidTime = new Date(entry.timestamp);
+            return bidTime >= new Date(currentTime.getFullYear(), currentTime.getMonth(), currentTime.getDate() - currentDay + 5, 16);
+          });
+          setUsers(currentBids);
+        }
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -59,6 +74,7 @@ const Results = () => {
             <th>Email</th>
             <th>Phone Number</th>
             <th>Bid Amount</th>
+            <th>Date/Time</th>
             <th>Status</th>
           </tr>
         </thead>
@@ -69,7 +85,8 @@ const Results = () => {
               <td>{user.email}</td>
               <td>{user.phoneNumber}</td>
               <td>₦{user.bid}</td>
-              <td>{user === winner ? 'Winner' : 'Not Winner'}</td>
+              <td>{user.timestamp}</td>
+              <td>{user === winner ? 'Winner' : 'Come back next week Friday'}</td>
             </tr>
           ))}
         </tbody>

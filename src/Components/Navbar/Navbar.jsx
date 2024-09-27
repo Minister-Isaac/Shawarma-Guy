@@ -19,31 +19,40 @@ const Navbar = () => {
 
         if (currentTime >= startOfDay && currentTime <= fourPm) {
           const timeRemaining = fourPm - currentTime;
-          setIsBiddingPeriod(true);
-          setTimeLeft(formatTime(timeRemaining));
+          setIsBiddingPeriod(true); // It's currently the bidding period
+          setTimeLeft(formatTime(timeRemaining)); // Countdown to 4 PM
           return;
         }
       }
 
-      // If it's not Friday or after 4 PM on Friday, count down to the next Friday 12 AM
+      // If it's not Friday or it's past 4 PM, count down to the next Friday 12 AM
       setIsBiddingPeriod(false);
       const nextFriday = getNextFriday();
       const timeRemaining = nextFriday - currentTime;
-      setTimeLeft(formatTime(timeRemaining));
+      setTimeLeft(formatTime(timeRemaining)); // Countdown to the next Friday
     };
 
     const intervalId = setInterval(updateTimer, 1000); // Update every second
     return () => clearInterval(intervalId); // Cleanup on component unmount
   }, []);
 
+  // Calculate the timestamp for the next Friday at 12 AM
   const getNextFriday = () => {
     const now = new Date();
     const nextFriday = new Date();
-    nextFriday.setDate(now.getDate() + ((5 - now.getDay() + 7) % 7)); // Calculate next Friday
+
+    // If today is Friday after 4 PM, set next Friday
+    if (now.getDay() === 5 && now.getHours() >= 16) {
+      nextFriday.setDate(now.getDate() + 7);
+    } else {
+      nextFriday.setDate(now.getDate() + ((5 - now.getDay() + 7) % 7));
+    }
+
     nextFriday.setHours(0, 0, 0, 0); // Set to Friday 12:00 AM
     return nextFriday.getTime();
   };
 
+  // Format the remaining time into days, hours, minutes, seconds
   const formatTime = (time) => {
     const days = Math.floor(time / (1000 * 60 * 60 * 24));
     const hours = Math.floor((time % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
