@@ -71,18 +71,8 @@ td:nth-child(4) {
   }
 }
 
-/* Responsive Table - Mobile View */
+/* Mobile View */
 @media (max-width: 480px) {
-  th, td {
-      padding: 8px;
-      font-size: 12px;
-  }
-
-  table {
-      width: 100%;
-      font-size: 12px;
-  }
-
   th {
       display: none; /* Hide table headers for mobile */
   }
@@ -90,7 +80,7 @@ td:nth-child(4) {
   td {
       display: block;
       width: 100%;
-      text-align: left;
+      text-align: left; /* Align text to the left */
       padding: 10px;
       border: none;
       position: relative;
@@ -102,7 +92,8 @@ td:nth-child(4) {
       margin-right: 10px;
       text-transform: uppercase;
       display: inline-block;
-      width: 40%;
+      width: 40%; /* Label width */
+      text-align: left; /* Align the label to the left */
   }
 
   td {
@@ -123,5 +114,10 @@ td:nth-child(4) {
   tr {
       margin-bottom: 10px;
       border-bottom: 2px solid #ddd;
+  }
+
+  /* Align content to flex-start */
+  td {
+    text-align: left; /* Ensure all data is aligned to the left */
   }
 }
