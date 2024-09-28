@@ -2,20 +2,39 @@
   width: 80%;
   margin: 0 auto;
   text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 table {
   width: 100%;
   border-collapse: collapse;
+  margin: 20px 0;
+  font-family: 'Arial', sans-serif;
 }
 
 th, td {
-  padding: 10px;
+  padding: 15px 10px;
   border: 1px solid #ddd;
+  text-align: center;
+  vertical-align: middle;
+  transition: background-color 0.3s ease;
 }
 
 th {
-  background-color: #f4f4f4;
+  background-color: #007BFF; /* Primary color for headers */
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+td {
+  font-size: 14px;
+  color: #333;
 }
 
 tr:nth-child(even) {
@@ -24,12 +43,26 @@ tr:nth-child(even) {
 
 tr:hover {
   background-color: #f1f1f1;
+  cursor: pointer;
 }
 
-/* Tablet View */
+/* Winner Row Styling */
+tr.winner-row {
+  background-color: #e0f7e9; /* Soft green for winner */
+  color: #2c7d36;
+  font-weight: bold;
+}
+
+/* Bidding Amount Styling */
+td:nth-child(4) {
+  color: #dc3545; /* Highlight the bid amount */
+  font-weight: bold;
+}
+
+/* Responsive Table - Tablet View */
 @media (max-width: 768px) {
   th, td {
-      padding: 8px;
+      padding: 10px;
       font-size: 14px;
   }
 
@@ -38,10 +71,10 @@ tr:hover {
   }
 }
 
-/* Mobile View */
+/* Responsive Table - Mobile View */
 @media (max-width: 480px) {
   th, td {
-      padding: 5px;
+      padding: 8px;
       font-size: 12px;
   }
 
@@ -60,11 +93,35 @@ tr:hover {
       text-align: left;
       padding: 10px;
       border: none;
+      position: relative;
   }
 
   td::before {
       content: attr(data-label);
       font-weight: bold;
       margin-right: 10px;
+      text-transform: uppercase;
+      display: inline-block;
+      width: 40%;
+  }
+
+  td {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+
+  td:nth-child(4) {
+      color: #dc3545;
+      font-weight: bold;
+  }
+
+  td:nth-child(6) {
+      font-weight: bold;
+      color: #007BFF;
+  }
+
+  tr {
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ddd;
   }
 }

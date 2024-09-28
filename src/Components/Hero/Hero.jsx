@@ -1,28 +1,41 @@
 import React, { useState, useEffect } from 'react';
-import "./Hero.css";
-import Shawarma2 from "../../assets/Shawama2.jpg";
+import './Hero.css';
+import Shawarma2 from '../../assets/Shawama2.jpg';
 
 const Hero = () => {
+  // Form Data
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phoneNumber: '',
-    bid: ''
+    bid: '',
   });
 
   const { name, email, phoneNumber, bid } = formData;
 
+  // State for bid submission, errors, and manual toggling
   const [bidSubmitted, setBidSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [showComebackMessage, setShowComebackMessage] = useState(false);
+
+  // Manual toggle state
+  const [manualToggle, setManualToggle] = useState(true);
+
+  // Automatic toggling based on time frame (Friday 12am-4pm)
   const [isBiddingOpen, setIsBiddingOpen] = useState(false);
 
   useEffect(() => {
-    // Check if today is Friday
     const today = new Date();
-    const day = today.getDay(); // 0 = Sunday, 5 = Friday
-    setIsBiddingOpen(day === 5);
+    const day = today.getDay(); // 5 = Friday
+    const hours = today.getHours(); // Get the current hour
+
+    // Check if the current time is within Friday 12am-4pm
+    if (day === 5 && hours >= 0 && hours < 16) {
+      setIsBiddingOpen(true);
+    } else {
+      setIsBiddingOpen(false);
+    }
   }, []);
 
   // Handles changes in form input fields
@@ -34,7 +47,7 @@ const Hero = () => {
   const validateBid = (bid) => {
     const bidValue = parseInt(bid, 10);
     if (isNaN(bidValue) || bidValue < 1 || bidValue > 3000) {
-      return "Your bid must be between ₦1 and ₦3000.";
+      return 'Your bid must be between ₦1 and ₦3000.';
     }
     return null;
   };
@@ -54,18 +67,25 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        "https://v1.nocodeapi.com/minister18/google_sheets/iQxNLtNaJzVLrwFk?tabId=Sheet1",
+        'https://v1.nocodeapi.com/minister18/google_sheets/iQxNLtNaJzVLrwFk?tabId=Sheet1',
         {
-          method: "POST",
+          method: 'POST',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
-          body: JSON.stringify([[name, email, phoneNumber, bid, new Date().toLocaleString()]])
+          body: JSON.stringify([
+            [name, email, phoneNumber, bid, new Date().toLocaleString()],
+          ]),
         }
       );
 
       await response.json();
-      setFormData({ ...formData, name: "", email: "", phoneNumber: "", bid: "" });
+      setFormData({
+        name: '',
+        email: '',
+        phoneNumber: '',
+        bid: '',
+      });
 
       // Check if the response is successful
       if (response.ok) {
@@ -84,14 +104,22 @@ const Hero = () => {
     }
   };
 
+  // Manual override (force toggle between bid form and comeback message)
+  const showFormOrMessage = () => {
+    if (manualToggle) {
+      return !isBiddingOpen; // If manually toggled, show the opposite of bidding state
+    }
+    return isBiddingOpen;
+  };
+
   if (showComebackMessage) {
     return (
       <div className='hero-container'>
-        <div className="hero-left">
+        <div className='hero-left'>
           <h1>Shawarma Haven</h1>
-          <img src={Shawarma2} alt="Shawarma" />
+          <img src={Shawarma2} alt='Shawarma' />
         </div>
-        <div className="hero-success">
+        <div className='hero-success'>
           <h1>Comeback next week Friday for your next bid!</h1>
         </div>
       </div>
@@ -101,11 +129,11 @@ const Hero = () => {
   if (bidSubmitted) {
     return (
       <div className='hero-container'>
-        <div className="hero-left">
+        <div className='hero-left'>
           <h1>Shawarma Haven</h1>
-          <img src={Shawarma2} alt="Shawarma" />
+          <img src={Shawarma2} alt='Shawarma' />
         </div>
-        <div className="hero-success">
+        <div className='hero-success'>
           <h1>🎉 Congratulations!</h1>
           <p>Your bid has been successfully placed.</p>
         </div>
@@ -115,63 +143,65 @@ const Hero = () => {
 
   return (
     <div className='hero-container'>
-      <div className="hero-left">
+      <div className='hero-left'>
         <h1>Shawarma Haven</h1>
-        <img src={Shawarma2} alt="Shawarma" />
+        <img src={Shawarma2} alt='Shawarma' />
       </div>
-      <div className="hero-right">
-        <h1>Place Your Bid</h1>
-        {isBiddingOpen ? (
-          <form className='hero-form' onSubmit={handleSubmit}>
-            {error && <p style={{ color: 'red' }}>{error}</p>}
-            
-            <label>Your Name:</label>
-            <input
-              placeholder='Name'
-              name='name'
-              type='text'
-              value={name}
-              onChange={handleInputChange}
-              required
-            />
+      <div className='hero-right'>
+        {showFormOrMessage() ? (
+          <>
+            <h1>Place Your Bid</h1>
+            <form className='hero-form' onSubmit={handleSubmit}>
+              {error && <p style={{ color: 'red' }}>{error}</p>}
 
-            <label>Your Email:</label>
-            <input
-              placeholder='Email'
-              name='email'
-              type='email'
-              value={email}
-              onChange={handleInputChange}
-              required
-            />
+              <label>Your Name:</label>
+              <input
+                placeholder='Name'
+                name='name'
+                type='text'
+                value={name}
+                onChange={handleInputChange}
+                required
+              />
 
-            <label>Your phone number:</label>
-            <input
-              placeholder='Phone Number'
-              name='phoneNumber'
-              type='text'
-              value={phoneNumber}
-              onChange={handleInputChange}
-              required
-            />
+              <label>Your Email:</label>
+              <input
+                placeholder='Email'
+                name='email'
+                type='email'
+                value={email}
+                onChange={handleInputChange}
+                required
+              />
 
-            <label>Place your bid:</label>
-            <input
-              placeholder='Bid amount must be between ₦1 - ₦3000'
-              name='bid'
-              type='text'
-              value={bid}
-              onChange={handleInputChange}
-              required
-            />
+              <label>Your phone number:</label>
+              <input
+                placeholder='Phone Number'
+                name='phoneNumber'
+                type='text'
+                value={phoneNumber}
+                onChange={handleInputChange}
+                required
+              />
 
-            <button className='hero-btn' type='submit' disabled={isSubmitting}>
-              {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
-          </form>
+              <label>Place your bid:</label>
+              <input
+                placeholder='Bid amount must be between ₦1 - ₦3000'
+                name='bid'
+                type='text'
+                value={bid}
+                onChange={handleInputChange}
+                required
+              />
+
+              <button className='hero-btn' type='submit' disabled={isSubmitting}>
+                {isSubmitting ? 'Submitting...' : 'Submit'}
+              </button>
+            </form>
+          </>
         ) : (
-          <div className="hero-disabled">
-            <p>Bidding is only allowed on Fridays. Please come back then!</p>
+          <div className='hero-disabled'>
+            <h1>Come back next week Friday!</h1>
           </div>
         )}
       </div>
@@ -180,6 +210,11 @@ const Hero = () => {
 };
 
 export default Hero;
+
+
+
+
+
 
 
 
