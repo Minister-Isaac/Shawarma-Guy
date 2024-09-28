@@ -20,7 +20,7 @@ const Hero = () => {
   const [showComebackMessage, setShowComebackMessage] = useState(false);
 
   // Manual toggle state
-  const [manualToggle, setManualToggle] = useState(true);
+  const [manualToggle, setManualToggle] = useState(false);
 
   // Automatic toggling based on time frame (Friday 12am-4pm)
   const [isBiddingOpen, setIsBiddingOpen] = useState(false);
