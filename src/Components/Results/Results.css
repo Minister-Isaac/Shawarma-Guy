@@ -101,23 +101,46 @@ td:nth-child(4) {
     padding: 10px 0;
   }
 
-  td:nth-child(4) {
-      color: #dc3545;
-      font-weight: bold;
+  /* Special handling for status (remove "Friday" from text) */
+  td:nth-child(6)::before {
+    content: 'Status'; /* Keep the label as 'Status' */
   }
 
   td:nth-child(6) {
-      font-weight: bold;
-      color: #007BFF;
-  }
-
-  tr {
-      margin-bottom: 10px;
-      border-bottom: 2px solid #ddd;
+    font-weight: bold;
+    color: #007BFF;
   }
 
   /* Align content to flex-start */
   td {
     text-align: left; /* Ensure all data is aligned to the left */
+  }
+
+  /* Remove Friday from the content of the status message in mobile */
+  td:nth-child(6)::after {
+    content: 'Come back next week'; /* Replace message */
+  }
+
+  tr {
+    margin-bottom: 10px;
+    border-bottom: 2px solid #ddd;
+  }
+
+  /* Adjust for better spacing and alignment */
+  td {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 8px;
+  }
+
+  td::before {
+    flex-basis: 40%;
+    font-weight: bold;
+  }
+
+  td::after {
+    flex-basis: 60%;
+    text-align: left;
   }
 }
