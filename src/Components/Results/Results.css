@@ -71,8 +71,18 @@ td:nth-child(4) {
   }
 }
 
-/* Mobile View */
+/* Responsive Table - Mobile View */
 @media (max-width: 480px) {
+  th, td {
+      padding: 8px;
+      font-size: 12px;
+  }
+
+  table {
+      width: 100%;
+      font-size: 12px;
+  }
+
   th {
       display: none; /* Hide table headers for mobile */
   }
@@ -80,7 +90,7 @@ td:nth-child(4) {
   td {
       display: block;
       width: 100%;
-      text-align: left; /* Align text to the left */
+      text-align: left;
       padding: 10px;
       border: none;
       position: relative;
@@ -92,8 +102,7 @@ td:nth-child(4) {
       margin-right: 10px;
       text-transform: uppercase;
       display: inline-block;
-      width: 40%; /* Label width */
-      text-align: left; /* Align the label to the left */
+      width: 40%;
   }
 
   td {
@@ -101,46 +110,18 @@ td:nth-child(4) {
     padding: 10px 0;
   }
 
-  /* Special handling for status (remove "Friday" from text) */
-  td:nth-child(6)::before {
-    content: 'Status'; /* Keep the label as 'Status' */
+  td:nth-child(4) {
+      color: #dc3545;
+      font-weight: bold;
   }
 
   td:nth-child(6) {
-    font-weight: bold;
-    color: #007BFF;
-  }
-
-  /* Align content to flex-start */
-  td {
-    text-align: left; /* Ensure all data is aligned to the left */
-  }
-
-  /* Remove Friday from the content of the status message in mobile */
-  td:nth-child(6)::after {
-    content: 'Come back next week'; /* Replace message */
+      font-weight: bold;
+      color: #007BFF;
   }
 
   tr {
-    margin-bottom: 10px;
-    border-bottom: 2px solid #ddd;
-  }
-
-  /* Adjust for better spacing and alignment */
-  td {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    padding: 8px;
-  }
-
-  td::before {
-    flex-basis: 40%;
-    font-weight: bold;
-  }
-
-  td::after {
-    flex-basis: 60%;
-    text-align: left;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #ddd;
   }
 }
