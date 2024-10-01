@@ -1,39 +1,51 @@
+/* Results Container */
 .results-container {
-  width: 80%;
-  margin: 0 auto;
+  width: 90%;
+  max-width: 1200px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.results-container h1 {
+  font-size: 2.5rem;
+  color: #007bff;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Table Styling */
 table {
   width: 100%;
   border-collapse: collapse;
   margin: 20px 0;
-  font-family: 'Arial', sans-serif;
 }
 
 th, td {
-  padding: 15px 10px;
+  padding: 20px 15px;
   border: 1px solid #ddd;
   text-align: center;
   vertical-align: middle;
+  font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
+/* Table Header */
 th {
-  background-color: #007BFF; /* Primary color for headers */
+  background-color: #007BFF;
   color: #fff;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  font-size: 16px;
+  font-size: 1.2rem;
 }
 
+/* Table Rows */
 td {
-  font-size: 14px;
   color: #333;
 }
 
@@ -48,80 +60,102 @@ tr:hover {
 
 /* Winner Row Styling */
 tr.winner-row {
-  background-color: #e0f7e9; /* Soft green for winner */
-  color: #2c7d36;
+  background-color: #28a745;
+  color: #fff;
   font-weight: bold;
+  border: 2px solid #218838;
 }
 
-/* Bidding Amount Styling */
+tr.winner-row:hover {
+  background-color: #218838;
+}
+
+/* Bid Amount Styling */
 td:nth-child(4) {
-  color: #dc3545; /* Highlight the bid amount */
+  color: #dc3545;
   font-weight: bold;
 }
 
-/* Responsive Table - Tablet View */
+/* Scroll to Top Button */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.scroll-to-top:hover {
+  background-color: #0056b3;
+  transform: translateY(-5px);
+}
+
+/* Mobile View Adjustments */
 @media (max-width: 768px) {
-  th, td {
-      padding: 10px;
-      font-size: 14px;
+  .results-container h1 {
+    font-size: 2rem;
+    margin-bottom: 15px;
   }
 
-  table {
-      width: 100%;
+  th, td {
+    padding: 15px 10px;
+    font-size: 0.95rem;
+  }
+
+  .scroll-to-top {
+    padding: 10px 18px;
+    font-size: 1rem;
   }
 }
 
-/* Responsive Table - Mobile View */
+/* Mobile Stack View */
 @media (max-width: 480px) {
-  th, td {
-      padding: 8px;
-      font-size: 12px;
-  }
-
-  table {
-      width: 100%;
-      font-size: 12px;
+  table, thead, tbody, th, td, tr {
+    display: block;
   }
 
   th {
-      display: none; /* Hide table headers for mobile */
+    display: none; /* Hide the table headers */
   }
 
   td {
-      display: block;
-      width: 100%;
-      text-align: left;
-      padding: 10px;
-      border: none;
-      position: relative;
+    display: flex;
+    justify-content: space-between;
+    border: none;
+    padding: 12px 0;
+    position: relative;
+    border-bottom: 1px solid #ddd;
   }
 
   td::before {
-      content: attr(data-label);
-      font-weight: bold;
-      margin-right: 10px;
-      text-transform: uppercase;
-      display: inline-block;
-      width: 40%;
+    content: attr(data-label); /* Attach label from data-label attribute */
+    font-weight: bold;
+    color: #007BFF;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   td {
-    border-bottom: 1px solid #ddd;
-    padding: 10px 0;
-  }
-
-  td:nth-child(4) {
-      color: #dc3545;
-      font-weight: bold;
-  }
-
-  td:nth-child(6) {
-      font-weight: bold;
-      color: #007BFF;
+    font-size: 0.9rem;
+    padding: 10px;
   }
 
   tr {
-      margin-bottom: 10px;
-      border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #007BFF;
+  }
+
+  .scroll-to-top {
+    padding: 8px 15px;
+    font-size: 0.9rem;
   }
 }
