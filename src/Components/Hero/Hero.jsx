@@ -16,7 +16,7 @@ const Hero = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [showComebackMessage, setShowComebackMessage] = useState(false);
-  const [manualToggle, setManualToggle] = useState(true);
+  const [manualToggle, setManualToggle] = useState(false);
   const [isBiddingOpen, setIsBiddingOpen] = useState(false);
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://v1.nocodeapi.com/bernie85/google_sheets/yfsQONnsCROTREgu?tabId=Sheet1',
+        'https://v1.nocodeapi.com/bernie85/google_sheets/yfsQONnsCROTREgu?tabId=Sheet2',
         {
           method: 'POST',
           headers: {
