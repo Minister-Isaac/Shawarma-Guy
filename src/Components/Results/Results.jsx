@@ -37,7 +37,7 @@ const Results = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbxF_p76J_73991kE4AWUIxBwoRGRWF8z8ZiMAHZ0lwA5l6N7pNeiDTAHu7XRRCLccHN/exec',
+        'https://v1.nocodeapi.com/minister18/google_sheets/iQxNLtNaJzVLrwFk?tabId=Sheet1',
         {
           method: 'GET',
           headers: {
