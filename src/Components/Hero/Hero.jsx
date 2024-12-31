@@ -56,7 +56,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://v1.nocodeapi.com/minister18/google_sheets/iQxNLtNaJzVLrwFk?tabId=Sheet1',
+        'https://v1.nocodeapi.com/minister18/google_sheets/BgMXeztGwOlJnvKV?tabId=Sheet6',
         {
           method: 'POST',
           headers: {
