@@ -56,7 +56,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://v1.nocodeapi.com/minister18/google_sheets/kmCcJJBUViuUSSnq?tabId=Sheet2',
+        'https://v1.nocodeapi.com/bernie85/google_sheets/yfsQONnsCROTREgu?tabId=Sheet1',
         {
           method: 'POST',
           headers: {
@@ -66,7 +66,7 @@ const Hero = () => {
         }
       );
 
-      await response.json()
+      await response.json();
       setFormData({ name: '', email: '', phoneNumber: '', bid: '' });
 
       if (response.ok) {
@@ -123,7 +123,7 @@ const Hero = () => {
     return (
       <div className='hero-container'>
         <div className='hero-left'>
-          <h1>Shawarma Love + Creamy Bliss</h1>
+          <h1>Shawarma Haven</h1>
           <img src={Shawarma2} alt='Shawarma' />
         </div>
         <div className='hero-success'>
@@ -137,7 +137,7 @@ const Hero = () => {
     return (
       <div className='hero-container'>
         <div className='hero-left'>
-          <h1>Shawarma Love + Creamy Bliss</h1>
+          <h1>Shawarma Haven</h1>
           <img src={Shawarma2} alt='Shawarma' />
         </div>
         <div className='hero-success'>
