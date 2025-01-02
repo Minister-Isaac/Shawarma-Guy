@@ -37,7 +37,7 @@ const Results = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        'https://script.google.com/macros/s/AKfycbz2dVj5wwU8JhHly9YC5TqGreBoMWXIEdG3ocRCeVnnMHnW0indawDhxSjlNRx7Wmgr/exec',
+        'https://script.google.com/macros/s/AKfycbxXJgSAmmZOieGjwPxlelHctCH087lGnVcM7vG1Xstewwvbg1A5jmontqludoiSPzjn/exec',
         {
           method: 'GET',
           headers: {
