@@ -37,7 +37,7 @@ const Results = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        'https://v1.nocodeapi.com/bernie85/google_sheets/beItPGXozDYCIetN?tabId=Sheet2',
+        'https://sheetdb.io/api/v1/d22enll2j6xws',
         {
           method: 'GET',
           headers: {
@@ -46,18 +46,18 @@ const Results = () => {
         }
       );
       const data = await response.json();
-
-      if (data && data.data) {
-        const entries = data.data.map((entry) => {
+      if (data) {
+        const entries = data.map((entry) => {
           return {
             name: entry['Name'] || 'No Name',
             email: entry['Email'] || 'No Email',
             phoneNumber: entry['Phone Number'] || entry['Phone'] || 'No Phone',
-            bid: parseInt(entry['Bid'], 10) || 0,
-            timestamp: entry['Timestamp'] || entry['Date/Time'] || 'No Timestamp',
+            bid: parseInt(entry['Bid Amount'], 10) || 0,
+            timestamp: entry['Timestamp'] || entry['Timestamp'] || 'No Timestamp',
           };
         });
-
+      console.log('data', data)
+        
         // Set the users data and determine the winner
         setUsers(entries);
         determineWinner(entries);

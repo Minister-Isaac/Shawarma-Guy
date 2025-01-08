@@ -8,9 +8,10 @@ const Hero = () => {
     email: '',
     phoneNumber: '',
     bid: '',
+    date:new Date().toLocaleString()
   });
 
-  const { name, email, phoneNumber, bid } = formData;
+  const { name, email, phoneNumber, bid, date } = formData;
 
   const [bidSubmitted, setBidSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -56,18 +57,24 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://v1.nocodeapi.com/bernie85/google_sheets/beItPGXozDYCIetN?tabId=Sheet2',
+        'https://sheetdb.io/api/v1/d22enll2j6xws',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify([[name, email, phoneNumber, bid, new Date().toLocaleString()]]),
+          body: JSON.stringify({data:[{
+            'Name': name,
+            'Email': email,
+            'Phone Number': phoneNumber,
+            'Bid Amount': bid,
+            'Date': date
+          }]}),
         }
       );
-
+//name, email, phoneNumber, bid, date
       await response.json();
-      setFormData({ name: '', email: '', phoneNumber: '', bid: '' });
+      setFormData({ name: '', email: '', phoneNumber: '', bid: '', date:'' });
 
       if (response.ok) {
         setBidSubmitted(true);
@@ -89,13 +96,17 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://v1.nocodeapi.com/bernie85/google_sheets/beItPGXozDYCIetN?tabId=Sheet1',
+        'https://sheetdb.io/api/v1/d22enll2j6xws',
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
           },
-          body: JSON.stringify([[email, new Date().toLocaleString()]]),
+          body: JSON.stringify({
+            data: {
+                'Email': email
+            }
+        }),
         }
       );
 
