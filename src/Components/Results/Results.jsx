@@ -53,7 +53,7 @@ const Results = () => {
             email: entry['Email'] || 'No Email',
             phoneNumber: entry['Phone Number'] || entry['Phone'] || 'No Phone',
             bid: parseInt(entry['Bid Amount'], 10) || 0,
-            timestamp: entry['Timestamp'] || entry['Timestamp'] || 'No Timestamp',
+            timestamp: entry['Date'] || entry['Date'] || 'No Date',
           };
         });
       console.log('data', data)
