@@ -57,7 +57,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://sheetdb.io/api/v1/d22enll2j6xws',
+        'https://sheetdb.io/api/v1/bo6gdkwa8wewv',
         {
           method: 'POST',
           headers: {
@@ -96,7 +96,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://sheetdb.io/api/v1/d22enll2j6xws',
+        'https://sheetdb.io/api/v1/bo6gdkwa8wewv',
         {
           method: 'POST',
           headers: {
