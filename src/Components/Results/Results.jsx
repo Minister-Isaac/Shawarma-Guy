@@ -37,7 +37,7 @@ const Results = () => {
   const fetchData = async () => {
     try {
       const response = await fetch(
-        'https://sheetdb.io/api/v1/bo6gdkwa8wewv',
+        'https://sheetdb.io/api/v1/4bj29qocl2j25',
         {
           method: 'GET',
           headers: {

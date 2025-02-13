@@ -17,7 +17,7 @@ const Hero = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [showComebackMessage, setShowComebackMessage] = useState(false);
-  const [manualToggle, setManualToggle] = useState(false);
+  const [manualToggle, setManualToggle] = useState(true);
   const [isBiddingOpen, setIsBiddingOpen] = useState(false);
 
   useEffect(() => {
@@ -57,7 +57,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://sheetdb.io/api/v1/bo6gdkwa8wewv',
+        'https://sheetdb.io/api/v1/4bj29qocl2j25',
         {
           method: 'POST',
           headers: {
@@ -96,7 +96,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://sheetdb.io/api/v1/bo6gdkwa8wewv',
+        'https://sheetdb.io/api/v1/4bj29qocl2j25',
         {
           method: 'POST',
           headers: {
