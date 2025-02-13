@@ -17,7 +17,7 @@ const Hero = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState(null);
   const [showComebackMessage, setShowComebackMessage] = useState(false);
-  const [manualToggle, setManualToggle] = useState(true);
+  const [manualToggle, setManualToggle] = useState(false);
   const [isBiddingOpen, setIsBiddingOpen] = useState(false);
 
   useEffect(() => {
