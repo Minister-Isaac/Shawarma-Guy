@@ -57,7 +57,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://sheetdb.io/api/v1/4bj29qocl2j25',
+        'https://sheetdb.io/api/v1/rinmggfdbsfdw',
         {
           method: 'POST',
           headers: {
@@ -96,7 +96,7 @@ const Hero = () => {
 
     try {
       const response = await fetch(
-        'https://sheetdb.io/api/v1/4bj29qocl2j25',
+        'https://sheetdb.io/api/v1/rinmggfdbsfdw',
         {
           method: 'POST',
           headers: {
@@ -169,7 +169,7 @@ const Hero = () => {
       <div className='hero-right'>
         {showFormOrMessage() ? (
           <>
-            <h1>Place Your Bid</h1>
+            <h1>BID FOR OUR SPECIAL OFFER TODAY<br />SHAWARMA + ZOBO + CHINCHIN</h1>
             <form className='hero-form' onSubmit={handleSubmitBid} aria-live="assertive">
               {error && <p style={{ color: 'red' }}>{error}</p>}
 
